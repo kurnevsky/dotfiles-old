@@ -1,0 +1,4 @@
+/dev/mapper/swap none swap defaults 0 0
+
+https://webdav.yandex.ru /mnt/yandex davfs user,noauto,uid=kurnevsky,file_mode=600,dir_mode=700 0 1
+
