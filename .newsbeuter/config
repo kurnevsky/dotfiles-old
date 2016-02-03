@@ -1,0 +1,6 @@
+refresh-on-startup yes
+cleanup-on-quit yes
+auto-reload yes
+reload-time 30
+browser "nohup firefox %u > /dev/null 2> /dev/null &"
+
