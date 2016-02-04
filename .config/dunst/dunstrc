@@ -1,4 +1,3 @@
-
 [global]
   font = Monospace 12
 
@@ -60,4 +59,8 @@
   background = "#ff0000"
   foreground = "#ffffff"
   timeout = 0
+
+[frame]
+  width = 1
+  color = "#888888"
 
