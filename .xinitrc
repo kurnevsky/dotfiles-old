@@ -13,5 +13,7 @@ syndaemon -d -t -k -R
 
 numlockx
 
+dunst &
+
 exec xmonad
 
