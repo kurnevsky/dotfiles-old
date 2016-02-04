@@ -199,13 +199,10 @@ myGSConfig = defaultGSConfig
 myStartupHook = do
   addScreenCorner SCUpperLeft $ goToSelectedOnWorkspace myGSConfig
   addScreenCorner SCLowerLeft $ gridselectWorkspace myGSConfig W.greedyView
-  spawn "xsetroot -cursor_name left_ptr"
   spawn "setxkbmap -model pc101 -layout us,ru -option grp:caps_toggle -option grp:switch -option grp_led:caps -option lv3:ralt_switch"
   spawn "sleep 1; xmodmap ~/.Xmodmap"
   spawn "xrandr --setprovideroffloadsink 0x50 0x79"
   spawn "compton -b -f -I 0.10 -O 0.10 --backend glx --vsync opengl --dbus"
-  spawn "syndaemon -d -t -k -R"
-  spawn "numlockx"
   spawn "feh --bg-fill ~/pic-3909-1920x1200.jpg"
   spawn "xrdb ~/.Xresources"
   spawn "taffybar"
