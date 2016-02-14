@@ -7,8 +7,8 @@ notification_type=0
 
 [StatusIcon]
 stepsize=5
-onclick=st -e 'alsamixer'
-theme=Default
+onclick=pavucontrol
+theme=Blue Bar
 use_panel_specific_icons=false
 lmb_slider=false
 mmb_mute=false
@@ -23,4 +23,3 @@ mute_enabled=true
 up=XF86AudioRaiseVolume
 down=XF86AudioLowerVolume
 mute=XF86AudioMute
-
