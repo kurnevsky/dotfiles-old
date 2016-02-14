@@ -15,5 +15,5 @@ numlockx
 
 dunst &
 
-exec xmonad
+exec xmonad 2>> ~/.xsession-errors
 
