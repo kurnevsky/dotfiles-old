@@ -57,7 +57,7 @@ myNormalBorderColor = "gray"
 
 myFocusedBorderColor = "blue"
 
-myXPConfig = defaultXPConfig
+myXPConfig = def
   { position = Top
   , height = 25
   , bgColor = "black"
@@ -203,8 +203,7 @@ myStartupHook = do
   spawn "sleep 1; xmodmap ~/.Xmodmap"
   spawn "xrandr --setprovideroffloadsink 0x50 0x79"
   spawn "compton -b -f -I 0.10 -O 0.10 --backend glx --vsync opengl --dbus"
-  spawn "feh --bg-fill ~/pic-3909-1920x1200.jpg"
-  spawn "xrdb ~/.Xresources"
+  spawn "feh --bg-fill ~/Images/pic-3909-1920x1200.jpg"
   spawn "taffybar"
   spawn "sleep 1; xscreensaver -no-splash"
   spawn "pgrep volumeicon; if [ $? -ne 0 ]; then volumeicon; fi"
