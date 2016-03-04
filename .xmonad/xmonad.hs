@@ -78,7 +78,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.union (planeKeys modm (Lines 3
   , ((modm,                 xK_c     ), kill) -- Close the focused window.
   , ((modm .|. shiftMask,   xK_c     ), kill9) -- Kill the focused window.
   , ((modm,                 xK_space ), sendMessage NextLayout) -- Rotate through the available layout algorithms.
-  , ((modm .|. shiftMask,   xK_space ), setLayout $ XMonad.layoutHook conf) -- Reset the layouts on the current workspace to default.
+  , ((modm .|. shiftMask,   xK_space ), (setLayout $ XMonad.layoutHook conf) >> docksStartupHook) -- Reset the layouts on the current workspace to default.
   , ((modm,                 xK_n     ), refresh) -- Resize viewed windows to the correct size.
   , ((modm,                 xK_Tab   ), windows W.focusDown) -- Move focus to the next window.
   , ((modm .|. shiftMask,   xK_Tab   ), windows W.focusUp) -- Move focus to the previous window.
@@ -172,7 +172,7 @@ myManageHook = fullscreenManageHook <> manageDocks <> (fmap not isDialog --> ins
   [ className =? "kcalc" --> doFloat
   ]
 
-myEventHook e = screenCornerEventHook e <> perWindowKbdLayout e <> fullscreenEventHook e
+myEventHook e = screenCornerEventHook e <> perWindowKbdLayout e <> fullscreenEventHook e <> docksEventHook e
 
 myLogHook = updatePointer (0.5, 0.5) (0, 0)
 
@@ -197,6 +197,7 @@ myGSConfig = defaultGSConfig
   }
 
 myStartupHook = do
+  docksStartupHook
   addScreenCorner SCUpperLeft $ goToSelectedOnWorkspace myGSConfig
   addScreenCorner SCLowerLeft $ gridselectWorkspace myGSConfig W.greedyView
   spawn "setxkbmap -model pc101 -layout us,ru -option grp:caps_toggle -option grp:switch -option grp_led:caps -option lv3:ralt_switch"
