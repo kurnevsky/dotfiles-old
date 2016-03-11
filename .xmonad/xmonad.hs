@@ -5,6 +5,7 @@ import Control.Monad
 import Control.Applicative
 import qualified Data.Map as M
 import System.Exit
+import System.Posix.Signals
 import XMonad hiding ((|||))
 import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
@@ -66,7 +67,10 @@ myXPConfig = def
   }
 
 -- withDisplay $ \dpy -> withFocused $ io . void . killClient dpy
-kill9 = spawn "kill -9 `xdotool getactivewindow getwindowpid`"
+-- kill9 = spawn "kill -9 `xdotool getactivewindow getwindowpid`"
+kill9 = withFocused $ \w ->
+  do p <- runQuery pid w
+     whenJust p $ io . signalProcess 9
 
 kill9Window w = spawn $ "kill -9 `xdotool getwindowpid " ++ show w ++ "`"
 
