@@ -18,6 +18,7 @@ import XMonad.Hooks.UrgencyHook hiding (Never)
 import System.Taffybar.Hooks.PagerHints (pagerHints)
 import XMonad.Prompt
 import XMonad.Prompt.Shell
+import XMonad.Prompt.ConfirmPrompt
 import XMonad.Hooks.PerWindowKbdLayout
 import XMonad.Util.NamedWindows
 import XMonad.Actions.CopyWindow
@@ -96,7 +97,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.union (planeKeys modm (Lines 3
   , ((modm .|. shiftMask,   xK_comma ), sendMessage (IncMasterN (-1))) -- Increment the number of windows in the master area.
   , ((modm .|. shiftMask,   xK_period), sendMessage (IncMasterN 1)) -- Decrement the number of windows in the master area.
   , ((modm              ,   xK_b     ), sendMessage ToggleStruts) -- Toggle the status bar gap.
-  , ((modm .|. shiftMask,   xK_q     ), io exitSuccess) -- Quit xmonad.
+  , ((modm .|. shiftMask,   xK_q     ), confirmPrompt myXPConfig "exit" $ io exitSuccess) -- Quit xmonad.
   , ((modm,                 xK_q     ), spawn "for pid in `pgrep taffybar`; do kill $pid; done; xmonad --recompile; xmonad --restart") -- Restart xmonad.
   , ((modm,                 xK_F6    ), spawn "sleep 0.5; xset dpms force off") -- Turn off screen.
   , ((modm,                 xK_u     ), focusUrgent) -- Focus urgent window (window with notification).
