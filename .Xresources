@@ -20,3 +20,10 @@ xscreensaver.pointerHysteresis: 10
 xscreensaver.procInterrupts: True
 xscreensaver.authWarningSlack: 20
 
+! Emacs
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
